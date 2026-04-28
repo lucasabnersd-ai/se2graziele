@@ -1391,45 +1391,43 @@ function renderNEW(){
     if(/[",;\r\n]/.test(s)) return '"'+s.replace(/"/g,'""')+'"';
     return s;
   }
-  function fmtDateBR(iso){
-    if(!iso) return '';
-    var d=new Date(iso);
-    if(isNaN(d.getTime())) return String(iso);
-    return d.toLocaleDateString('pt-BR');
-  }
   function buildCSV(){
-    var monUUID={}, pagUUID={};
-    try{ monUUID=JSON.parse(localStorage.getItem('se2_monitored_uuid')||'{}'); }catch(e){}
-    try{ pagUUID=JSON.parse(localStorage.getItem('se2_pagamentos_uuid')||'{}'); }catch(e){}
     var data=(window.__SE2__&&window.__SE2__.data)||[];
-    var byUuid={};
-    for(var i=0;i<data.length;i++){ if(data[i]&&data[i].uuid) byUuid[data[i].uuid]=data[i]; }
-    var uuids={};
-    Object.keys(monUUID).forEach(function(u){ uuids[u]=1; });
-    Object.keys(pagUUID).forEach(function(u){ uuids[u]=1; });
-    function extObs(v){ return (v&&typeof v==='object'&&v.obs!=null)?String(v.obs):''; }
-    function extData(v){ if(!v||typeof v!=='object') return ''; var d=v.ts||v.dt||''; return d?fmtDateBR(d):''; }
+    var byId={};
+    for(var i=0;i<data.length;i++){ if(data[i]) byId[data[i].id]=data[i]; }
+    var monLocal={}, pagLocal={};
+    if(typeof monitored!=='undefined') monLocal=monitored;
+    if(typeof pagamentos!=='undefined') pagLocal=pagamentos;
+    var monInit=(window.__SE2__&&window.__SE2__.monitoredInit)||{};
+    var pagInit=(window.__SE2__&&window.__SE2__.pagamentosInit)||{};
+    var allMon=Object.assign({}, monInit, monLocal);
+    var allPag=Object.assign({}, pagInit, pagLocal);
     var rows=[];
-    rows.push(['uuid','filial','empresa','fornecedor','num','parcela','vencimento','valor','obs_monitoramento','data_monitoramento','obs_pagamento','data_pagamento','monitoramento_json','pagamento_json']);
-    Object.keys(uuids).forEach(function(uuid){
-      var r=byUuid[uuid]||{};
-      var mv=monUUID[uuid];
-      var pv=pagUUID[uuid];
+    rows.push(['TIPO_A\u00c7\u00c3O','ID','UUID','FILIAL','EMPRESA','RAZ\u00c3O_SOCIAL','FORNECEDOR','NUM_TITULO','PARCELA','EMISS\u00c3O','VENCIMENTO','VALOR','SALDO','STATUS','ATRASO','HISTORICO','CNPJ','TIPO_TITULO','CLASSIFICACAO_SC','OBS_A\u00c7\u00c3O','DATA_A\u00c7\u00c3O','SNAP_STATUS','SNAP_SALDO','SNAP_VENCIMENTO']);
+    Object.keys(allMon).forEach(function(id){
+      var info=allMon[id]; var r=byId[+id]||{};
+      var snap=info.snap||{};
       rows.push([
-        uuid,
-        r.filial||'',
-        r.empresa||'',
-        r.fornecedor||'',
-        r.num||'',
-        r.parcela||'',
-        fmtDateBR(r.vencimento),
-        (r.valor!=null?String(r.valor).replace('.',','):''),
-        extObs(mv),
-        extData(mv),
-        extObs(pv),
-        extData(pv),
-        (uuid in monUUID?JSON.stringify(mv):''),
-        (uuid in pagUUID?JSON.stringify(pv):'')
+        'MONITORAMENTO', id, r.uuid||'', r.filial||'', r.empresa||'',
+        r.razao||'', r.fornecedor||'', r.num||'', r.parcela||'',
+        r.emissao||'', r.vencimento||'', r.valor!=null?r.valor:'',
+        r.saldo!=null?r.saldo:'', r.status||'', r.atraso!=null?r.atraso:'',
+        (r.historico||'').replace(/;/g,','), r.cnpj||'', r.tipoTitulo||'',
+        r.classificacaoSC||'', (info.obs||'').replace(/;/g,','),
+        info.ts||'', snap.status||'', snap.saldo!=null?snap.saldo:'',
+        snap.vencimento||''
+      ]);
+    });
+    Object.keys(allPag).forEach(function(id){
+      var info=allPag[id]; var r=byId[+id]||{};
+      rows.push([
+        'TRATADO/PAGAMENTO', id, r.uuid||'', r.filial||'', r.empresa||'',
+        r.razao||'', r.fornecedor||'', r.num||'', r.parcela||'',
+        r.emissao||'', r.vencimento||'', r.valor!=null?r.valor:'',
+        r.saldo!=null?r.saldo:'', r.status||'', r.atraso!=null?r.atraso:'',
+        (r.historico||'').replace(/;/g,','), r.cnpj||'', r.tipoTitulo||'',
+        r.classificacaoSC||'', (info.obs||'').replace(/;/g,','),
+        info.dt||info.ts||'', '','',''
       ]);
     });
     return rows.map(function(row){ return row.map(csvEscape).join(';'); }).join('\r\n');
@@ -1441,17 +1439,17 @@ function renderNEW(){
     var blob=new Blob([bom+csv],{type:'text/csv;charset=utf-8;'});
     var url=URL.createObjectURL(blob);
     var a=document.createElement('a');
-    var ts=new Date().toISOString().replace(/[:T]/g,'-').slice(0,16);
     a.href=url;
-    a.download='se2_estado_'+ts+'.csv';
+    a.download='BACKUP.csv';
     document.body.appendChild(a);
     a.click();
     setTimeout(function(){ a.remove(); URL.revokeObjectURL(url); },100);
     var btn=document.getElementById('se2-export-csv-btn');
     if(btn){
       var orig=btn.textContent;
-      btn.textContent='CSV baixado ('+lines+' linhas)';
-      setTimeout(function(){ btn.textContent=orig; },2500);
+      btn.textContent='\u2705 BACKUP.csv baixado ('+lines+' t\u00edtulos)';
+      btn.style.background='#16a34a';
+      setTimeout(function(){ btn.textContent=orig; btn.style.background='#2563eb'; },3000);
     }
   }
   function createButton(){
@@ -1459,9 +1457,9 @@ function renderNEW(){
     var btn=document.createElement('button');
     btn.id='se2-export-csv-btn';
     btn.type='button';
-    btn.textContent='Baixar CSV (backup)';
-    btn.title='Baixa um CSV com as alteracoes de monitoramento e pagamentos';
-    btn.style.cssText='position:fixed;bottom:20px;right:20px;z-index:99999;padding:10px 16px;background:#2563eb;color:#fff;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.15);font-family:system-ui,sans-serif';
+    btn.textContent='\ud83d\udcbe Baixar BACKUP.csv';
+    btn.title='Baixa BACKUP.csv com todos os t\u00edtulos de Monitoramento e Tratados/Pagamento';
+    btn.style.cssText='position:fixed;bottom:20px;right:20px;z-index:99999;padding:12px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.2);font-family:system-ui,sans-serif;transition:background .2s';
     btn.onmouseenter=function(){ btn.style.background='#1d4ed8'; };
     btn.onmouseleave=function(){ btn.style.background='#2563eb'; };
     btn.onclick=doDownload;
