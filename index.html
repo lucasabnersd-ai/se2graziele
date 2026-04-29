@@ -48,8 +48,8 @@ body{background:#f1f5f9;color:#1e2340;line-height:1.35}
 .sec-title h2{font-size:15px;color:#1e2340}
 .sec-title .cnt{font-size:12px;color:#64748b}
 table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid #dbe6f3;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(15,23,42,.06);font-size:12px}
-th{background:#eef2f7;padding:11px 10px;text-align:center;font-weight:700;color:#475569;border-bottom:1px solid #dbe1ef;font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
-td{padding:11px 10px;border-bottom:1px solid #edf1f7;vertical-align:middle}
+th{background:#eef2f7;padding:7px 8px;text-align:center;font-weight:700;color:#475569;border-bottom:1px solid #dbe1ef;font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+td{padding:6px 8px;border-bottom:1px solid #edf1f7;vertical-align:middle}
 tr:hover td{background:#ffffff}
 .drag-scroll{max-width:100%;overflow:auto;border-radius:12px}
 .drag-scroll thead th{position:sticky;top:0;z-index:5;box-shadow:0 2px 0 #dde1ee}
@@ -60,11 +60,16 @@ tr:hover td{background:#ffffff}
 .risk-badge.warn{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
 .focus-col{background:#eef6ff!important}
 .focus-head{background:#e0ecff!important;color:#1e3a8a!important}
-.hist-col{background:#f8fafc!important;min-width:320px;font-size:12px;color:#334155!important}
+.hist-col{background:#f8fafc!important;min-width:200px;font-size:12px;color:#334155!important}
 .usr-head{background:#ecfdf5!important;color:#065f46!important}
 .usr-col{background:#f0fdf4!important}
 .uuid-copy{margin-left:6px;border:1px solid #cbd5e1;background:#fff;border-radius:6px;padding:1px 6px;font-size:10px;cursor:pointer;color:#334155}
 .uuid-copy:hover{border-color:#2563eb;color:#1d4ed8}
+.uuid-copy-lg{font-size:18px!important;padding:4px 8px!important;border-radius:8px!important;line-height:1!important}
+.uuid-copy.copied{background:#dcfce7;border-color:#16a34a;color:#166534;box-shadow:0 0 0 3px rgba(22,163,74,.14)}
+.uuid-copy.copied:hover{border-color:#16a34a;color:#166534}
+.uuid-copy-lg.copied{box-shadow:0 0 0 3px rgba(22,163,74,.16), 0 4px 12px rgba(22,163,74,.12)}
+.cell-linha{font-family:Consolas,Monaco,monospace;font-size:10px;color:#64748b;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .status{padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;display:inline-block;white-space:nowrap;border:1px solid transparent}
 .st-venc{background:#fef2f2;color:#b91c1c;border-color:#fecaca}
 .st-baix{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}
@@ -165,11 +170,6 @@ thead th.stick-1,thead th.stick-2,thead th.stick-3{background:#e0ecff!important;
 #p-all tbody tr:nth-child(odd) td.stick-1,#p-all tbody tr:nth-child(odd) td.stick-2,#p-all tbody tr:nth-child(odd) td.stick-3{background:#fff!important}
 #p-all tbody tr:nth-child(even) td.stick-1,#p-all tbody tr:nth-child(even) td.stick-2,#p-all tbody tr:nth-child(even) td.stick-3{background:#f7f9fd!important}
 
-.val-param-box{background:#fff;border:1px solid #dbe6f3;border-radius:14px;padding:20px 24px;margin-bottom:16px;box-shadow:0 4px 16px rgba(15,23,42,.06)}
-.val-param-box h3{font-size:15px;margin-bottom:12px;color:#1e2340}
-.val-forn-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
-.val-forn-table th{background:#f8fafc;padding:8px 10px;text-align:left;font-weight:700;color:#64748b;font-size:10px;text-transform:uppercase}
-.val-forn-table td{padding:8px 10px;border-bottom:1px solid #f1f5f9}
 
 /* ── Multi-select Empresa ── */
 .ms-wrap{position:relative;display:inline-block}
@@ -189,19 +189,22 @@ thead th.stick-1,thead th.stick-2,thead th.stick-3{background:#e0ecff!important;
 .ms-item input[type=checkbox]{accent-color:#2563eb;cursor:pointer;width:14px;height:14px;flex-shrink:0;margin:0;pointer-events:none}
 /* ── Tooltip ── */
 .tt-box{position:fixed;background:#1e2340;color:#fff;padding:7px 12px;border-radius:8px;font-size:12px;max-width:400px;word-break:break-word;white-space:pre-wrap;line-height:1.55;z-index:9999;pointer-events:none;box-shadow:0 4px 18px rgba(0,0,0,.35);opacity:0;transition:opacity .12s;display:none;top:0;left:0}
+.loader-banner{position:fixed;left:20px;bottom:20px;z-index:100000;padding:10px 14px;background:#fff;border:1px solid #dbe6f3;border-radius:10px;color:#1e2340;font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(15,23,42,.18);max-width:min(520px,calc(100vw - 40px))}
+.loader-banner.error{background:#fef2f2;border-color:#fecaca;color:#b91c1c}
 .tt-box.show{opacity:1;display:block}
 
 </style></head><body>
+<div id="se2-load-banner" class="loader-banner">Carregando a tela...</div><noscript><div class="loader-banner error" style="position:static;margin:20px">JavaScript desativado. Abra este arquivo com JavaScript habilitado para carregar a tela.</div></noscript>
 <div class="header">
   <div class="logo">S&amp;D</div>
-  <div class="htitle"><h1>Contas a Pagar — SE2 Posição Diária</h1><div class="sub">S&amp;D Florestal Group · TOTVS Protheus · Amostra 70 títulos</div></div>
-    <div class="hdate"><div class="l">⏱ Última Atualização</div><div class="v" id="hdt">12/04/2026 · 08:30</div>
+  <div class="htitle"><h1>Contas a Pagar — SE2 Posição Diária</h1><div class="sub">S&amp;D Florestal Group · TOTVS Protheus · Amostra 15509 títulos</div></div>
+    <div class="hdate"><div class="l">⏱ Última Atualização</div><div class="v" id="hdt">29/04/2026 · 08:40</div>
   </div>
 </div>
 <div class="tabs">
   <div class="tab active" data-tab="all" onclick="tab('all')">Tela Principal <span class="bdg" id="b-all">0</span></div>
   <div class="tab" data-tab="mon" onclick="tab('mon')">Monitoramento <span class="bdg" id="b-mon">0</span></div>
-  <div class="tab" data-tab="valp" onclick="tab('valp')">Parametros</div>
+  <div class="tab" data-tab="trat" onclick="tab('trat')">Tratados <span class="bdg" id="b-trat">0</span></div>
 </div>
 
 <div class="panel active" id="p-all">
@@ -245,7 +248,7 @@ thead th.stick-1,thead th.stick-2,thead th.stick-3{background:#e0ecff!important;
     </div>
     <div class="pill-grp"><span class="lbl">Filial</span><span id="fils-all"></span></div>
   </div></div>
-  <div class="sec-title"><h2>Títulos</h2><div class="sec-actions"><button class="btn secondary" onclick="openMonitorBulk()">📌 Monitorar selecionados</button> <button class="btn neutral" onclick="download()">⬇ CSV</button> <span class="cnt" id="cnt"></span></div></div>
+  <div class="sec-title"><h2>Títulos</h2><div class="sec-actions"><button class="btn secondary" onclick="openMonitorBulk()">📌 Monitorar selecionados</button> <button class="btn" style="background:#16a34a;color:#fff;border-color:#16a34a" onclick="openTratarBulk()">✓ Enviar para Tratados</button> <button class="btn neutral" onclick="download()">⬇ CSV</button> <span class="cnt" id="cnt"></span></div></div>
   <div class="drag-scroll" style="overflow-x:auto;cursor:grab;user-select:none"><table><thead><tr>
     <th style="width:26px"><input type="checkbox" onchange="togAll(this)"></th>
     <th>EMPRESA - FILIAL</th><th>TIPO</th><th>Nº TÍTULO</th><th>PARC.</th>
@@ -254,9 +257,8 @@ thead th.stick-1,thead th.stick-2,thead th.stick-3{background:#e0ecff!important;
     <th class="num">VALOR TÍTULO</th><th class="num">SALDO</th>
     <th>STATUS</th>
     <th>DT. BAIXA</th>
-    <th class="focus-head">TIPO PGTO</th><th>CLASSIFICAÇÃO SC</th><th>CAMPO UUID</th><th class="usr-head">USUÁRIO INC</th><th class="usr-head">DATA INC</th><th class="usr-head">USUÁRIO ALT</th><th class="usr-head">DATA ALT</th><th>LINHA DIGITÁVEL</th><th>DT. BORDERÔ</th>
+    <th class="focus-head">TIPO PGTO</th><th>CLASSIFICAÇÃO SC</th><th>CAMPO UUID</th><th class="hist-col">HISTÓRICO</th><th class="usr-head">USUÁRIO INC</th><th class="usr-head">DATA INC</th><th class="usr-head">USUÁRIO ALT</th><th class="usr-head">DATA ALT</th><th style="max-width:160px">LINHA DIGITÁVEL</th><th>DT. BORDERÔ</th>
     <th>DT. LIBERAÇÃO</th><th>CNPJ/CPF</th>
-    <th class="hist-col">HISTÓRICO</th><th style="width:90px">AÇÕES</th>
   </tr></thead><tbody id="tb"></tbody></table></div>
   <div id="pager" class="pager"></div>
 </div>
@@ -287,6 +289,7 @@ thead th.stick-1,thead th.stick-2,thead th.stick-3{background:#e0ecff!important;
     </div>
     <button class="btn neutral" onclick="clearMON()">Limpar</button>
     <button class="btn neutral" onclick="downloadMON()">⬇ CSV</button>
+    <button class="btn" onclick="removeSelected('mon')" title="Remover os títulos marcados do Monitoramento" style="background:#b91c1c;color:#fff;border-color:#b91c1c">🗑️ Remover selecionados</button>
   </div></div>
   <div class="fbox"><div class="pill-row">
     <div class="pill-grp"><span class="lbl">Status</span>
@@ -302,84 +305,87 @@ thead th.stick-1,thead th.stick-2,thead th.stick-3{background:#e0ecff!important;
 </div>
 
 
-<div class="panel" id="p-valp">
-  <div class="val-param-box">
-    <h3>Parametros de Validacao</h3>
-    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px">
-      <div style="background:#f8fafc;border-radius:8px;padding:14px 20px;flex:1;min-width:200px">
-        <div style="font-size:10px;color:#64748b;text-transform:uppercase;font-weight:700">Limiar Dias Proximos</div>
-        <div style="font-size:28px;font-weight:800;color:#7c3aed;margin-top:4px">5 dias</div>
-        <div style="font-size:11px;color:#64748b;margin-top:4px">Se a diferenca entre emissao e vencimento for menor ou igual a 5 dias em fornecedor recorrente, o titulo eh sinalizado para validacao de competencia.</div>
-      </div>
-      <div style="background:#f8fafc;border-radius:8px;padding:14px 20px;flex:1;min-width:200px">
-        <div style="font-size:10px;color:#64748b;text-transform:uppercase;font-weight:700">Resumo de Validacao</div>
-        <div style="font-size:13px;margin-top:8px;line-height:1.8">
-          <span style="color:#16a34a;font-weight:700">OK: 40</span> &nbsp;|&nbsp;
-          <span style="color:#dc2626;font-weight:700">Sem Cod. Barras: 144</span> &nbsp;|&nbsp;
-          <span style="color:#dc2626;font-weight:700">Venc. Divergente: 37</span> &nbsp;|&nbsp;
-          <span style="color:#7c3aed;font-weight:700">Forn. Recorrente: 0</span>
-        </div>
-        <div style="font-size:11px;color:#64748b;margin-top:4px">Gerado em: 15/04/2026 23:44:56</div>
-      </div>
+
+<div class="panel" id="p-trat">
+  <div class="fbox"><div class="frow">
+    <div class="fld"><label>Nº NF / TÍTULO</label><input id="trat-num" placeholder="ex: 000001234" oninput="renderTRAT()"></div>
+    <div class="fld"><label>FORNECEDOR</label><input id="trat-forn" placeholder="ex: Signallink" oninput="renderTRAT()" style="min-width:160px"></div>
+    <div class="fld"><label>VALOR MÍN</label><input id="trat-vmin" type="number" placeholder="0" oninput="renderTRAT()" style="width:100px"></div>
+    <div class="fld"><label>VALOR MÁX</label><input id="trat-vmax" type="number" placeholder="∞" oninput="renderTRAT()" style="width:100px"></div>
+    <div class="fld"><label>VENCIMENTO DE</label><input id="trat-d1" type="date" oninput="renderTRAT()"></div>
+    <div class="fld"><label>ATÉ</label><input id="trat-d2" type="date" oninput="renderTRAT()"></div>
+    <div class="fld"><label>UUID</label><input id="trat-uuid" placeholder="Buscar UUID" oninput="renderTRAT()" style="min-width:220px"></div>
+    <button class="btn neutral" onclick="clearTRAT()">Limpar</button>
+    <button class="btn neutral" onclick="downloadTRAT()">⬇ CSV</button>
+    <button class="btn" onclick="removeSelected('trat')" title="Remover os títulos marcados de Tratados" style="background:#b91c1c;color:#fff;border-color:#b91c1c">🗑️ Remover selecionados</button>
+  </div></div>
+  <div class="fbox"><div class="pill-row">
+    <div class="pill-grp"><span class="lbl">Status</span>
+      <span class="pill" data-st="Vencido" onclick="togStX(this,'trat')">Vencido</span>
+      <span class="pill" data-st="A Vencer" onclick="togStX(this,'trat')">A Vencer</span>
+      <span class="pill" data-st="Baixado" onclick="togStX(this,'trat')">Baixado</span>
+      <span class="pill" data-st="Baixa Parcial" onclick="togStX(this,'trat')">Baixa Parcial</span>
     </div>
-  </div>
-  <div class="val-param-box">
-    <h3>Fornecedores Recorrentes Detectados (32)</h3>
-    <div style="font-size:12px;color:#64748b;margin-bottom:10px">Fornecedores com 2+ titulos em meses distintos ou 3+ titulos no periodo analisado.</div>
-    <div class="drag-scroll" style="overflow-x:auto"><table class="val-forn-table">
-      <thead><tr><th>FORNECEDOR</th><th class="num">QTD. TITULOS</th><th class="num">VALOR TOTAL</th></tr></thead>
-      <tbody><tr><td style="font-weight:600">Ab Comercio De Veiculos Ltda</td><td class="num">3</td><td class="num cell-money">R$ 5.266,00</td></tr>
-<tr><td style="font-weight:600">Agronelli Agroindustria Ltda</td><td class="num">3</td><td class="num cell-money">R$ 9.033,68</td></tr>
-<tr><td style="font-weight:600">Alianca Diesel Ltda</td><td class="num">2</td><td class="num cell-money">R$ 2.800,00</td></tr>
-<tr><td style="font-weight:600">Auto Eletrica Do Anisio Ltda</td><td class="num">2</td><td class="num cell-money">R$ 3.660,00</td></tr>
-<tr><td style="font-weight:600">Auto Eletrica Silva Campos Ltda</td><td class="num">11</td><td class="num cell-money">R$ 2.976,85</td></tr>
-<tr><td style="font-weight:600">Borborema Tratores Pecas E Equipamentos Ltda</td><td class="num">3</td><td class="num cell-money">R$ 1.907,61</td></tr>
-<tr><td style="font-weight:600">Br Tractor Locacao De Maquinas Pecas E Servicos Ltda</td><td class="num">3</td><td class="num cell-money">R$ 9.500,00</td></tr>
-<tr><td style="font-weight:600">Cemig Distribuicao S.A</td><td class="num">4</td><td class="num cell-money">R$ 297,02</td></tr>
-<tr><td style="font-weight:600">Continental Distribuidora De Pecas Ltda</td><td class="num">10</td><td class="num cell-money">R$ 6.749,66</td></tr>
-<tr><td style="font-weight:600">Dellas Comercio E Transportes Ltda</td><td class="num">2</td><td class="num cell-money">R$ 8.583,32</td></tr>
-<tr><td style="font-weight:600">Eletrozema S/A</td><td class="num">2</td><td class="num cell-money">R$ 3.926,35</td></tr>
-<tr><td style="font-weight:600">Engepecas Equipamentos Ltda.</td><td class="num">5</td><td class="num cell-money">R$ 1.459,76</td></tr>
-<tr><td style="font-weight:600">Itamig Auto &amp; Truck Services Ltda</td><td class="num">7</td><td class="num cell-money">R$ 12.626,30</td></tr>
-<tr><td style="font-weight:600">Komatsu Forest Industria E Comercio De Maquinas Florestais L</td><td class="num">15</td><td class="num cell-money">R$ 98.276,10</td></tr>
-<tr><td style="font-weight:600">Lucas Corgozinho Dos Santos 09313130661</td><td class="num">2</td><td class="num cell-money">R$ 2.805,00</td></tr>
-<tr><td style="font-weight:600">Mang Express Comercio Norte Ltda</td><td class="num">2</td><td class="num cell-money">R$ 4.574,34</td></tr>
-<tr><td style="font-weight:600">Mercolub Lubrificantes Ltda.</td><td class="num">3</td><td class="num cell-money">R$ 45.118,00</td></tr>
-<tr><td style="font-weight:600">Montediesel Servicos E Pecas Ltda</td><td class="num">2</td><td class="num cell-money">R$ 1.356,30</td></tr>
-<tr><td style="font-weight:600">Para Turbo Freios Ltda</td><td class="num">4</td><td class="num cell-money">R$ 3.200,00</td></tr>
-<tr><td style="font-weight:600">Patricia Xavier Comercio De Pecas Ltda</td><td class="num">9</td><td class="num cell-money">R$ 9.195,00</td></tr>
-<tr><td style="font-weight:600">Policlinica Sao Vicente De Paula Ltda</td><td class="num">3</td><td class="num cell-money">R$ 2.281,00</td></tr>
-<tr><td style="font-weight:600">Santa Rita Manutencoes Ltda</td><td class="num">5</td><td class="num cell-money">R$ 7.861,67</td></tr>
-<tr><td style="font-weight:600">Senior Instituicao De Pagamento Ltda</td><td class="num">3</td><td class="num cell-money">R$ 8.429,80</td></tr>
-<tr><td style="font-weight:600">Simoes Pecas &amp; Servicos Ltda</td><td class="num">3</td><td class="num cell-money">R$ 3.465,00</td></tr>
-<tr><td style="font-weight:600">Sociedade Importadora Agro Assai Ltda</td><td class="num">4</td><td class="num cell-money">R$ 8.872,34</td></tr>
-<tr><td style="font-weight:600">Terra Pneus Ltda</td><td class="num">9</td><td class="num cell-money">R$ 68.640,00</td></tr>
-<tr><td style="font-weight:600">Totvs S.A.</td><td class="num">10</td><td class="num cell-money">R$ 34.076,63</td></tr>
-<tr><td style="font-weight:600">Toxicologia Pardini Laboratorios S/A</td><td class="num">4</td><td class="num cell-money">R$ 560,00</td></tr>
-<tr><td style="font-weight:600">Vannucci Importacao, Exportacao E Comercio De Autopecas Ltda</td><td class="num">3</td><td class="num cell-money">R$ 4.435,00</td></tr>
-<tr><td style="font-weight:600">Via Trucks Comercio De Caminhoes Ltda</td><td class="num">24</td><td class="num cell-money">R$ 46.833,36</td></tr>
-<tr><td style="font-weight:600">Wcm Maquinas &amp; Servicos Ltda</td><td class="num">5</td><td class="num cell-money">R$ 6.861,70</td></tr>
-<tr><td style="font-weight:600">Wn Pecas Diesel Ltda</td><td class="num">6</td><td class="num cell-money">R$ 8.080,50</td></tr>
-</tbody>
-    </table></div>
-  </div>
+    <div class="pill-grp"><span class="lbl">Filial</span><span id="fils-trat"></span></div>
+  </div></div>
+  <div id="trat-stats" class="stats-row"></div>
+  <div id="trat-list"></div>
 </div>
 
 <script src="datos.js"></script>
 <script>
-const BOOT = window.__SE2__ || { data: [], updatedAt: "", monitoredInit: {}, pagamentosInit: {} };
+(function(){
+  function paintError(msg){
+    var el = document.getElementById('se2-load-banner');
+    if(!el) return;
+    el.textContent = msg;
+    el.classList.add('error');
+    el.style.display = 'block';
+  }
+  window.addEventListener('error', function(ev){
+    var loc = ev && ev.filename ? (' [' + ev.filename + ':' + ev.lineno + ':' + ev.colno + ']') : '';
+    paintError('Falha ao carregar scripts. ' + (ev && ev.message ? ev.message : 'Erro desconhecido') + loc);
+  });
+  window.addEventListener('unhandledrejection', function(){
+    paintError('Falha ao carregar scripts. Verifique index.html e datos.js.');
+  });
+})();
+</script>
+<script>
+const BOOT = window.__SE2__ || { data: [], updatedAt: "", monitoredInit: {}, pagamentosInit: {}, treatedInit: {} };
 const EMPRESA_FILIAL_MAP = {"3": "BRASMAC", "03": "BRASMAC", "003": "BRASMAC", "4": "CAPIVARA", "04": "CAPIVARA", "004": "CAPIVARA", "38": "BIOENERGIA", "038": "BIOENERGIA", "39": "BIOFLORESTAS", "039": "BIOFLORESTAS", "43": "LOGISTICA", "043": "LOGISTICA"};
 function getEmpresaFilial(c){c=String(c||'').trim();return EMPRESA_FILIAL_MAP[c]||EMPRESA_FILIAL_MAP[c.replace(/^0+/,'')]||c;}
 
 const DATA = BOOT.data || [];
 const PAGAMENTOS_INIT = BOOT.pagamentosInit || {};
 const MONITORED_INIT = BOOT.monitoredInit || {};
+const TREATED_INIT = BOOT.treatedInit || BOOT.tratadosInit || {};
 function applyBootMeta(){
   const el = document.getElementById("hdt");
   if(!el || !BOOT.updatedAt) return;
   const d = new Date(BOOT.updatedAt);
   el.textContent = isNaN(d.getTime()) ? String(BOOT.updatedAt) : ("Última atualização: " + d.toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}));
 }
+
+function setLoadBanner(message, isError){
+  const el = document.getElementById("se2-load-banner");
+  if(!el) return;
+  if(!message){
+    el.style.display = "none";
+    return;
+  }
+  el.textContent = message;
+  el.style.display = "block";
+  el.classList.toggle("error", !!isError);
+}
+
+window.addEventListener("error", function(){
+  setLoadBanner("Falha ao carregar a tela. Verifique se index.html e datos.js estão na mesma pasta.", true);
+});
+
+window.addEventListener("unhandledrejection", function(){
+  setLoadBanner("Falha ao carregar a tela. Verifique se index.html e datos.js estão na mesma pasta.", true);
+});
 
 const sel = {st:new Set(), tpg:new Set(), filial:new Set()};
 let alertFocusIds = null;
@@ -411,11 +417,12 @@ function brDateToSortKey(s){
   }
   buildFilPills('fils-all','all');
   buildFilPills('fils-mon','mon');
+  buildFilPills('fils-trat','trat');
 })();
 function togFilPill(el,kind){
-  const s=kind==='all'?sel:selMon; const v=el.dataset.fil;
+  const s=kind==='all'?sel:kind==='trat'?selTrat:selMon; const v=el.dataset.fil;
   if(s.filial.has(v)){s.filial.delete(v);el.classList.remove('on');}else{s.filial.add(v);el.classList.add('on');}
-  kind==='all'?render(true):renderMON();
+  kind==='all'?render(true):kind==='trat'?renderTRAT():renderMON();
 }
 document.addEventListener('click',function(e){
   if(!e.target.closest('.ms-wrap')){
@@ -566,11 +573,32 @@ function rowTone(r){
   const risk = riskInfo(r);
   return risk.rowClass || '';
 }
-function copyUUID(value){
+function copyUUID(value,btnEl){
   const text = String(value||'').trim();
   if(!text) return;
+  function showFeedback(){
+    if(!btnEl) return;
+    if(btnEl._copyTimer) clearTimeout(btnEl._copyTimer);
+    const origHtml=btnEl.innerHTML;
+    const origTitle=btnEl.getAttribute('title') || 'Copiar UUID';
+    btnEl.classList.add('copied');
+    btnEl.innerHTML='✓';
+    btnEl.setAttribute('title','Copiado');
+    btnEl._copyTimer=setTimeout(()=>{
+      btnEl.classList.remove('copied');
+      btnEl.innerHTML=origHtml;
+      btnEl.setAttribute('title',origTitle);
+      btnEl._copyTimer=null;
+    },1200);
+    return;
+    const orig=btnEl.textContent;
+    btnEl.textContent='✅';
+    btnEl.style.background='#dcfce7';
+    btnEl.style.borderColor='#16a34a';
+    setTimeout(()=>{ btnEl.textContent=orig; btnEl.style.background=''; btnEl.style.borderColor=''; },1200);
+  }
   if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).catch(()=>{});
+    navigator.clipboard.writeText(text).then(showFeedback).catch(()=>{showFeedback();});
     return;
   }
   const ta = document.createElement('textarea');
@@ -579,6 +607,7 @@ function copyUUID(value){
   ta.select();
   document.execCommand('copy');
   ta.remove();
+  showFeedback();
 }
 
 function filtered(){
@@ -631,7 +660,7 @@ const selMon = {st:new Set(), tpg:new Set(), filial:new Set()};
 // ===== PERSISTÊNCIA DE ESTADO (localStorage + UUID) =====
 function _buildUUIDState(){
   // Converte estado atual (por ID) para estado por UUID (para exportação segura)
-  const pagUUID = {}, monUUID = {};
+  const pagUUID = {}, monUUID = {}, tratUUID = {};
   Object.entries(pagamentos).forEach(([id, val]) => {
     const r = DATA.find(x => x.id === +id);
     if(r && r.uuid) pagUUID[r.uuid] = val;
@@ -640,16 +669,22 @@ function _buildUUIDState(){
     const r = DATA.find(x => x.id === +id);
     if(r && r.uuid) monUUID[r.uuid] = val;
   });
-  return {pagUUID, monUUID};
+  Object.entries(treated).forEach(([id, val]) => {
+    const r = DATA.find(x => x.id === +id);
+    if(r && r.uuid) tratUUID[r.uuid] = val;
+  });
+  return {pagUUID, monUUID, tratUUID};
 }
 
 function salvarEstado(){
   try{
-    const {pagUUID, monUUID} = _buildUUIDState();
+    const {pagUUID, monUUID, tratUUID} = _buildUUIDState();
     localStorage.setItem('se2_pagamentos', JSON.stringify(pagamentos));
     localStorage.setItem('se2_monitored',  JSON.stringify(monitored));
+    localStorage.setItem('se2_treated',    JSON.stringify(treated));
     localStorage.setItem('se2_pagamentos_uuid', JSON.stringify(pagUUID));
     localStorage.setItem('se2_monitored_uuid',  JSON.stringify(monUUID));
+    localStorage.setItem('se2_treated_uuid',    JSON.stringify(tratUUID));
   }catch(e){}
 }
 
@@ -682,21 +717,40 @@ function restaurarEstado(){
     }
     const bp = document.getElementById('b-pag'); if(bp) bp.textContent=Object.keys(pagamentos).length;
     document.getElementById('b-mon').textContent=Object.keys(monitored).length;
+    if(TREATED_INIT && Object.keys(TREATED_INIT).length){
+      Object.keys(TREATED_INIT).forEach(k=>{ treated[+k]=TREATED_INIT[k]; });
+    } else {
+      const tuuid = localStorage.getItem('se2_treated_uuid');
+      if(tuuid){
+        const obj = JSON.parse(tuuid);
+        Object.entries(obj).forEach(([uuid, val]) => {
+          const r = DATA.find(x => x.uuid === uuid);
+          if(r) treated[r.id] = val;
+        });
+      } else {
+        const tStr=localStorage.getItem('se2_treated');
+        if(tStr){ const obj=JSON.parse(tStr); Object.keys(obj).forEach(k=>{ treated[+k]=obj[k]; }); }
+      }
+    }
+    document.getElementById('b-trat').textContent=Object.keys(treated).length;
   }catch(e){ console.error('Erro ao restaurar estado:', e); }
 }
 
 function exportarEstado(){
   salvarEstado();
-  const {pagUUID, monUUID} = _buildUUIDState();
+  const {pagUUID, monUUID, tratUUID} = _buildUUIDState();
   const estado={
     pagamentos: pagamentos,
     monitored:  monitored,
+    treated: treated,
     pagamentos_uuid: pagUUID,
     monitored_uuid:  monUUID,
+    treated_uuid:  tratUUID,
     uuids_vistos: DATA.map(r=>r.uuid),
     exportadoEm: new Date().toISOString(),
     totalPag: Object.keys(pagamentos).length,
-    totalMon: Object.keys(monitored).length
+    totalMon: Object.keys(monitored).length,
+    totalTrat: Object.keys(treated).length
   };
   const blob=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});
   const a=document.createElement('a');
@@ -710,6 +764,7 @@ function exportarEstado(){
     alert(
       '✅ Estado exportado com sucesso!\n\n' +
       '📌 Títulos em monitoramento: ' + estado.totalMon + '\n' +
+      '✓ Títulos tratados: ' + estado.totalTrat + '\n' +
       '💰 Títulos enviados p/ pagamento: ' + estado.totalPag + '\n\n' +
       '▶ Próximos passos:\n' +
       '1. Coloque o arquivo se2_estado.json na mesma pasta do script Python\n' +
@@ -750,23 +805,50 @@ function sendPagBulk(){
 }
 function openMonitor(id){
   const r=DATA.find(x=>x.id===id); if(!r) return;
-  openModal('📌 Monitorar',`${r.num} — ${r.razao}`,obs=>{
-    const snap={status:DATA.find(x=>x.id===id)?.status,saldo:DATA.find(x=>x.id===id)?.saldo,atraso:DATA.find(x=>x.id===id)?.atraso,vencimento:DATA.find(x=>x.id===id)?.vencimento};
-    monitored[id]={obs,ts:today(),snap}; salvarEstado(); populateEmps('mon'); renderMON(); document.getElementById('b-mon').textContent=Object.keys(monitored).length;
-    const cb=document.querySelector(`.rcb[data-id="${id}"]`); if(cb) cb.checked=false;
+  openModal('📌 Monitorar',`\${r.num} — \${r.razao}`,obs=>{
+    const snapFull=JSON.parse(JSON.stringify(r));
+    const snap={status:r.status,saldo:r.saldo,atraso:r.atraso,vencimento:r.vencimento};
+    monitored[id]={obs,ts:today(),snap,snapFull}; salvarEstado(); populateEmps('mon'); renderMON(); document.getElementById('b-mon').textContent=Object.keys(monitored).length;
+    const cb=document.querySelector(`.rcb[data-id="\${id}"]`); if(cb) cb.checked=false;
   });
 }
 function openMonitorBulk(){
   const ids=[...document.querySelectorAll('#p-all .rcb:checked')].map(c=>+c.dataset.id);
   if(!ids.length){alert('Selecione pelo menos um título'); return;}
-  openModal(`📌 Monitorar ${ids.length} títulos`,'',obs=>{
-    ids.forEach(id=>{const rx=DATA.find(x=>x.id===id); const snap={status:rx?.status,saldo:rx?.saldo,atraso:rx?.atraso,vencimento:rx?.vencimento}; monitored[id]={obs,ts:today(),snap};}); salvarEstado(); populateEmps('mon'); renderMON(); document.getElementById('b-mon').textContent=Object.keys(monitored).length;
+  openModal(`📌 Monitorar \${ids.length} títulos`,'',obs=>{
+    ids.forEach(id=>{const rx=DATA.find(x=>x.id===id); const snapFull=JSON.parse(JSON.stringify(rx)); const snap={status:rx?.status,saldo:rx?.saldo,atraso:rx?.atraso,vencimento:rx?.vencimento}; monitored[id]={obs,ts:today(),snap,snapFull};}); salvarEstado(); populateEmps('mon'); renderMON(); document.getElementById('b-mon').textContent=Object.keys(monitored).length;
     document.querySelectorAll('#p-all .rcb:checked').forEach(cb=>cb.checked=false);
     document.querySelector('#p-all thead input[type=checkbox]').checked=false;
   });
 }
 function removePag(id){delete pagamentos[id]; salvarEstado(); renderPAG(); const bp=document.getElementById('b-pag'); if(bp) bp.textContent=Object.keys(pagamentos).length;}
 function removeMon(id){delete monitored[id]; salvarEstado(); renderMON(); document.getElementById('b-mon').textContent=Object.keys(monitored).length;}
+function syncBulkHeader(kind){
+  const boxes=[...document.querySelectorAll('#p-'+kind+' .rcb-'+kind)];
+  const head=document.getElementById('bulk-'+kind+'-all');
+  if(!head) return;
+  const total=boxes.length;
+  const checked=boxes.filter(cb=>cb.checked).length;
+  head.checked=total>0 && checked===total;
+  head.indeterminate=checked>0 && checked<total;
+}
+function toggleBulkSelection(kind, checked){
+  const boxes=[...document.querySelectorAll('#p-'+kind+' .rcb-'+kind)];
+  boxes.forEach(cb=>{cb.checked=checked;});
+  const head=document.getElementById('bulk-'+kind+'-all');
+  if(head){ head.checked=checked; head.indeterminate=false; }
+}
+function removeSelected(kind){
+  const ids=[...document.querySelectorAll('#p-'+kind+' .rcb-'+kind+':checked')].map(cb=>+cb.dataset.id);
+  if(!ids.length){ alert('Selecione pelo menos um título'); return; }
+  const label=kind==='mon'?'Monitoramento':'Tratados';
+  if(!confirm('Remover '+ids.length+' título(s) de '+label+'?')) return;
+  const store=kind==='mon'?monitored:treated;
+  ids.forEach(id=>{ delete store[id]; });
+  salvarEstado();
+  if(kind==='mon'){ renderMON(); const bm=document.getElementById('b-mon'); if(bm) bm.textContent=Object.keys(monitored).length; }
+  else { renderTRAT(); const bt=document.getElementById('b-trat'); if(bt) bt.textContent=Object.keys(treated).length; }
+}
 function editPagObs(id){
   const r=DATA.find(x=>x.id===id); if(!r) return;
   const cur=pagamentos[id]||{}; 
@@ -802,9 +884,9 @@ function togEmpX(el,kind){
   renderPAG();
 }
 function togStX(el,kind){
-  const s = kind==='pag'?selPag:selMon; const v=el.dataset.st;
+  const s = kind==='pag'?selPag:kind==='trat'?selTrat:selMon; const v=el.dataset.st;
   if(s.st.has(v)){s.st.delete(v); el.classList.remove('on');} else {s.st.add(v); el.classList.add('on');}
-  kind==='pag'?renderPAG():renderMON();
+  kind==='pag'?renderPAG():kind==='trat'?renderTRAT():renderMON();
 }
 function togTpgX(el,kind){
   const s = kind==='pag'?selPag:selMon; const v=el.dataset.tpg||'';
@@ -921,7 +1003,7 @@ function buildDiff(snap,r){
 }
 
 function renderMON(){
-  let entries=Object.entries(monitored).map(([id,m])=>({r:DATA.find(x=>x.id===+id),...m})).filter(e=>e.r);
+  let entries=Object.entries(monitored).map(([id,m])=>{const live=DATA.find(x=>x.id===+id); const r=m.snapFull||live; if(!r) return null; return {r,...m,liveR:live};}).filter(e=>e!==null&&e.r);
   entries=applyFilters('mon',entries);
   const tot=entries.reduce((s,e)=>s+e.r.saldo,0);
   const venc=entries.filter(e=>e.r.status==='Vencido').length;
@@ -933,16 +1015,15 @@ function renderMON(){
     <div class="pag-stat" style="border-left-color:#7c3aed"><div class="l">Com alteração</div><div class="v" style="color:#7c3aed">${altered}</div></div>`;
   if(!entries.length){document.getElementById('mon-list').innerHTML='<div style="text-align:center;padding:40px;color:#64748b">Nenhum título monitorado.</div>'; return;}
   const head=`<tr>
-    <th style="width:26px"></th>
+    <th style="width:26px"><input type="checkbox" id="bulk-mon-all" onchange="toggleBulkSelection('mon', this.checked)" title="Selecionar todos os visíveis"></th>
     <th>EMPRESA - FILIAL</th><th>TIPO</th><th>Nº TÍTULO</th><th>PARC.</th>
     <th>RAZÃO SOCIAL</th><th>FORNECEDOR</th>
     <th>EMISSÃO</th><th>VENCIMENTO</th><th>VENC. REAL</th>
     <th class="num">VALOR TÍTULO</th><th class="num">SALDO</th>
     <th>STATUS</th>
     <th>DT. BAIXA</th>
-    <th class="focus-head">TIPO PGTO</th><th>CLASSIFICAÇÃO SC</th><th>OBSERVAÇÕES</th><th>CAMPO UUID</th><th class="usr-head">USUÁRIO INC</th><th class="usr-head">DATA INC</th><th class="usr-head">USUÁRIO ALT</th><th class="usr-head">DATA ALT</th><th>LINHA DIGITÁVEL</th><th>DT. BORDERÔ</th>
-    <th>DT. LIBERAÇÃO</th><th>CNPJ/CPF</th>
-    <th class="hist-col">HISTÓRICO</th><th style="width:90px">AÇÕES</th></tr>`;
+    <th class="focus-head">TIPO PGTO</th><th>CLASSIFICAÇÃO SC</th><th>OBSERVAÇÕES</th><th>CAMPO UUID</th><th class="hist-col">HISTÓRICO</th><th class="usr-head">USUÁRIO INC</th><th class="usr-head">DATA INC</th><th class="usr-head">USUÁRIO ALT</th><th class="usr-head">DATA ALT</th><th style="max-width:160px">LINHA DIGITÁVEL</th><th>DT. BORDERÔ</th>
+    <th>DT. LIBERAÇÃO</th><th>CNPJ/CPF</th><th style="width:34px"></th></tr>`;
   const body=entries.map(e=>{const r=e.r;
     const risk = riskInfo(r);
     const hasChange=e.snap&&(e.snap.status!==r.status||Math.abs((r.saldo||0)-(e.snap.saldo||0))>0.01||(r.atraso||0)!==(e.snap.atraso||0));
@@ -950,7 +1031,7 @@ function renderMON(){
     const inc=splitUserDate(r.usrInc), alt=splitUserDate(r.usrAlt);
     const incDt=inc.date||'—', altDt=alt.date||'—';
     return `<tr class="${rowClass} ${hasChange?'row-change':''}">
-    <td></td>
+    <td><input type="checkbox" class="rcb-mon" data-id="${r.id}" onchange="syncBulkHeader('mon')"></td>
     <td class="cell-company">${r.filial} - ${getEmpresaFilial(r.empresa || r.filial)}</td>
     <td class="cell-date">${r.tipo}</td>
     <td class="cell-date">${r.num}</td>
@@ -967,17 +1048,17 @@ function renderMON(){
     <td class="focus-col cell-date">${r.tipoPgto||'—'}</td>
     <td class="cell-date">${risk.badgeClass?`<span class="risk-badge ${risk.badgeClass}">${risk.badgeClass==='crit'?'⛔':'⚠️'} ${risk.label}</span>`:`<span class="status st-baix">${risk.label}</span>`}</td>
     <td style="padding:6px 8px;min-width:210px"><div class="obs-box"><span class="obs-txt ${e.obs?'':'vazio'}">${e.obs||'Clique para adicionar...'}</span><button class="obs-edit-btn" onclick="editMonObs(${r.id})" title="Editar observação">✏️</button></div></td>
-    <td class="cell-uuid" title="${r.uuid||''}">${r.uuid?r.uuid.slice(0,13)+'…':'—'}<button class="uuid-copy" data-uuid="${r.uuid||''}" onclick="copyUUID(this.dataset.uuid)" title="Copiar UUID">copiar</button></td>
+    <td class="cell-uuid" title="${r.uuid||''}"><button class="uuid-copy uuid-copy-lg" data-uuid="${r.uuid||''}" onclick="copyUUID(this.dataset.uuid,this)" title="Copiar UUID">📋</button></td>
+    <td class="hist-col cell-history" title="${r.historico||''}">${r.historico||'—'}</td>
     <td class="usr-col cell-user" title="${escHtml(r.usrInc||'')}">${escHtml(inc.name||'—')}</td>
     <td class="usr-col cell-date" title="${escHtml(r.usrInc||'')}">${escHtml(incDt)}</td>
     <td class="usr-col cell-user" title="${escHtml(r.usrAlt||'')}">${escHtml(alt.name||'—')}</td>
     <td class="usr-col cell-date" title="${escHtml(r.usrAlt||'')}">${escHtml(altDt)}</td>
-    <td class="cell-code" title="${r.linhaDigitavel||''}">${r.linhaDigitavel||'—'}</td>
+    <td class="cell-linha" title="${r.linhaDigitavel||''}">${r.linhaDigitavel||'—'}</td>
     <td class="cell-date">${fmtDt(r.dtBordero)}</td>
     <td class="cell-date">${fmtDt(r.dtLiberacao)}</td>
     <td class="cell-code">${r.cnpj||'—'}</td>
-    <td class="hist-col cell-history" title="${r.historico||''}">${r.historico||'—'}</td>
-    <td class="cell-action"><button class="ab-mn" onclick="removeMon(${r.id})">✕</button></td></tr>`;}).join('');
+    <td class="cell-action"><button class="ab-mn" onclick="removeMon(${r.id})" title="Remover do Monitoramento">✕</button></td></tr>`;}).join('');
   document.getElementById('mon-list').innerHTML=`<div class="drag-scroll" style="overflow-x:auto;cursor:grab;user-select:none"><table class="mon-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
   applyDrag('#p-mon');
 }
@@ -987,7 +1068,7 @@ function applyDrag(sel){
   document.querySelectorAll(sel+' .drag-scroll').forEach(el=>{
     if(el.dataset.drag) return; el.dataset.drag='1';
     let d=false,sx=0,sl=0;
-    el.addEventListener('mousedown',ev=>{if(ev.target.tagName==='BUTTON'||ev.target.tagName==='INPUT')return; d=true;sx=ev.pageX-el.offsetLeft;sl=el.scrollLeft;el.style.cursor='grabbing';ev.preventDefault();});
+    el.addEventListener('mousedown',ev=>{const t=ev.target.tagName;if(t==='BUTTON'||t==='INPUT'||t==='SELECT'||t==='OPTION'||t==='TEXTAREA')return; d=true;sx=ev.pageX-el.offsetLeft;sl=el.scrollLeft;el.style.cursor='grabbing';ev.preventDefault();});
     el.addEventListener('mouseleave',()=>{d=false;el.style.cursor='grab';});
     el.addEventListener('mouseup',()=>{d=false;el.style.cursor='grab';});
     el.addEventListener('mousemove',ev=>{if(!d)return;el.scrollLeft=sl-(ev.pageX-el.offsetLeft-sx);});
@@ -1003,16 +1084,16 @@ function downloadPAG(){
   const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob(['\ufeff'+head+'\n'+body],{type:'text/csv;charset=utf-8'})); a.download='pagamentos.csv'; a.click();
 }
 function downloadMON(){
-  let entries = Object.entries(monitored).map(([id,m])=>({r:DATA.find(x=>x.id===+id),...m})).filter(e=>e.r);
-  entries = applyFilters('mon', entries);
+  let entries=Object.entries(monitored).map(([id,m])=>{const live=DATA.find(x=>x.id===+id); const r=m.snapFull||live; if(!r) return null; return {r,...m,liveR:live};}).filter(e=>e!==null&&e.r);
+  entries=applyFilters('mon',entries);
   if(!entries.length){alert('Nada para baixar'); return;}
-  const head='Filial-Empresa;Tipo;Num;Razao;Fornecedor;Vencimento;Valor;Saldo;Status;TipoTitulo;CodigoBarras;LinhaDigitavel;ClassificacaoSC;UUID;Historico;Observacao;DtMonit';
-  const body=entries.map(e=>[e.r.filial+' - '+getEmpresaFilial(e.r.empresa||e.r.filial),e.r.tipo,e.r.num,e.r.razao,e.r.fornecedor,e.r.vencimento,e.r.valor,e.r.saldo,e.r.status,e.r.tipoTitulo||'',e.r.codigoBarras||'',e.r.linhaDigitavel||'',e.r.classificacaoSC||'',e.r.uuid||'',(e.r.historico||'').replace(/;/g,','),(e.obs||'').replace(/;/g,','),e.ts].join(';')).join('\n');
+  const head='Filial-Empresa;Tipo;Num;Parcela;Razao;Fornecedor;Emissao;Vencimento;VencReal;Valor;Saldo;Status;DtBaixa;TipoPgto;ClassificacaoSC;UUID;UsuarioInc;DataInc;UsuarioAlt;DataAlt;LinhaDigitavel;DtBordero;DtLiberacao;CNPJ;TipoTitulo;CodigoBarras;Historico;Observacao;DtMonitoramento';
+  const body=entries.map(e=>{const r=e.r; const inc=splitUserDate(r.usrInc); const alt=splitUserDate(r.usrAlt); return [r.filial+' - '+getEmpresaFilial(r.empresa||r.filial),r.tipo,r.num,r.parcela||'',(r.razao||'').replace(/;/g,','),(r.fornecedor||'').replace(/;/g,','),r.emissao||'',r.vencimento||'',r.vencReal||'',r.valor,r.saldo,r.status,r.baixa||'',r.tipoPgto||'',r.classificacaoSC||'',r.uuid||'',inc.name||'',inc.date||'',alt.name||'',alt.date||'',r.linhaDigitavel||'',r.dtBordero||'',r.dtLiberacao||'',r.cnpj||'',r.tipoTitulo||'',r.codigoBarras||'',(r.historico||'').replace(/;/g,','),(e.obs||'').replace(/;/g,','),e.ts].join(';');}).join('\n');
   const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob(['\ufeff'+head+'\n'+body],{type:'text/csv;charset=utf-8'})); a.download='monitoramento.csv'; a.click();
 }
 
 // Ordenação por clique no cabeçalho
-const SORT_MAP = ['','empresa','tipo','num','parcela','razao','fornecedor','emissao','vencimento','vencReal','valor','saldo','status','baixa','tipoPgto','classificacaoSC','uuid','usrIncName','usrIncDate','usrAltName','usrAltDate','linhaDigitavel','dtBordero','dtLiberacao','cnpj','historico',''];
+const SORT_MAP = ['','empresa','tipo','num','parcela','razao','fornecedor','emissao','vencimento','vencReal','valor','saldo','status','baixa','tipoPgto','classificacaoSC','uuid','historico','usrIncName','usrIncDate','usrAltName','usrAltDate','linhaDigitavel','dtBordero','dtLiberacao','cnpj'];
 const DATE_SORT_KEYS = new Set(['emissao','vencimento','vencReal','baixa','dtBordero','dtLiberacao']);
 const NUM_SORT_KEYS = new Set(['valor','saldo','valLiqBaix','atraso']);
 let sortKey=null, sortAsc=true;
@@ -1056,13 +1137,20 @@ function sortData(rows){
 }
 
 // Inicialização
-document.addEventListener('DOMContentLoaded', function(){ applyBootMeta(); restaurarEstado();
+function startApp(){ try{
+  applyBootMeta();
+  restaurarEstado();
   populateTipoPgtoPills('all');
   populateTipoPgtoPills('mon');
   render();
   setupSort();
-  applyDrag('#p-valp');
-});
+  setLoadBanner('');
+}catch(e){ console.error('Falha ao iniciar a tela:', e); setLoadBanner('Falha ao iniciar a tela. Reabra o HTML na mesma pasta do datos.js.', true); } }
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',startApp);
+}else{
+  startApp();
+}
 
 function render(resetPage=false){
   if(resetPage) currentPage = 1;
@@ -1097,18 +1185,17 @@ function render(resetPage=false){
       <td class="cell-date">${fmtDt(r.baixa)}</td>
       <td class="focus-col cell-date">${r.tipoPgto||'—'}</td>
       <td>${risk.badgeClass?`<span class="risk-badge ${risk.badgeClass}">${risk.badgeClass==='crit'?'⛔':'⚠️'} ${risk.label}</span>`:`<span class="status st-baix">${risk.label}</span>`}</td>
-      <td class="cell-uuid" title="${r.uuid}">${r.uuid?r.uuid.slice(0,13)+'…':'—'}<button class="uuid-copy" data-uuid="${r.uuid||''}" onclick="copyUUID(this.dataset.uuid)" title="Copiar UUID">copiar</button></td>
+      <td class="cell-uuid" title="${r.uuid||''}"><button class="uuid-copy uuid-copy-lg" data-uuid="${r.uuid||''}" onclick="copyUUID(this.dataset.uuid,this)" title="Copiar UUID">📋</button></td>
+      <td class="hist-col cell-history" title="${r.historico}">${r.historico||'—'}</td>
       <td class="usr-col cell-user" title="${escHtml(r.usrInc||'')}">${escHtml(inc.name||'—')}</td>
       <td class="usr-col cell-date" title="${escHtml(r.usrInc||'')}">${escHtml(incDt)}</td>
       <td class="usr-col cell-user" title="${escHtml(r.usrAlt||'')}">${escHtml(alt.name||'—')}</td>
       <td class="usr-col cell-date" title="${escHtml(r.usrAlt||'')}">${escHtml(altDt)}</td>
-      <td class="cell-code" title="${r.linhaDigitavel||''}">${r.linhaDigitavel||'—'}</td>
-      <td class="cell-date">${fmtDt(r.dtBordero)}</td>
-      <td class="cell-date">${fmtDt(r.dtLiberacao)}</td>
-      <td class="cell-code">${r.cnpj||'—'}</td>
-      <td class="hist-col cell-history" title="${r.historico}">${r.historico||'—'}</td>
-      <td class="cell-action"><div class="pill-wrap"><button class="ab-mn" onclick="openMonitor(${r.id})" title="Monitorar">📌</button></div></td>
-    </tr>`;}).join('');
+      <td class="cell-linha" title="${r.linhaDigitavel||''}">${r.linhaDigitavel||'—'}</td>
+          <td class="cell-date">${fmtDt(r.dtBordero)}</td>
+    <td class="cell-date">${fmtDt(r.dtLiberacao)}</td>
+    <td class="cell-code">${r.cnpj||'—'}</td>
+    <td class="cell-action"><button class="ab-mn" onclick="removeMon(${r.id})" title="Remover do Monitoramento">✕</button></td></tr>`;}).join('');
   document.getElementById('cnt').textContent = `${d.length} de ${DATA.length} títulos`;
   document.getElementById('b-all').textContent = DATA.length;
   document.getElementById('pager').innerHTML = `
@@ -1193,7 +1280,7 @@ function goDateOutlier(){
   tab('all');
   render(true);
 }
-function tab(t){ if(t==='mon') setTimeout(renderMON,0); document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===t)); document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active')); document.getElementById('p-'+t).classList.add('active'); }
+function tab(t){ if(t==='mon') setTimeout(renderMON,0); if(t==='trat') setTimeout(renderTRAT,0); document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===t)); document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active')); document.getElementById('p-'+t).classList.add('active'); }
 function togAll(cb){ document.querySelectorAll('.rcb').forEach(c=>c.checked=cb.checked); }
 
 function download(){
@@ -1371,6 +1458,157 @@ function renderNEW(){
   applyDrag('#p-new');
 }
 
+// ===== TRATADOS =====
+const treated = {};
+const selTrat = {st:new Set(), filial:new Set()};
+
+function openTratar(id){
+  const r=DATA.find(x=>x.id===id); if(!r) return;
+  openModal('✓ Enviar para Tratados',`${r.num} — ${r.razao} — ${fmtBR(r.valor)}`,obs=>{
+    const snapFull=JSON.parse(JSON.stringify(r));
+    const risk=riskInfo(r);
+    treated[id]={obs,ts:today(),snapFull,classificacaoSC:risk.label}; salvarEstado(); renderTRAT(); document.getElementById('b-trat').textContent=Object.keys(treated).length;
+    const cb=document.querySelector(`.rcb[data-id="${id}"]`); if(cb) cb.checked=false;
+  });
+}
+function openTratarBulk(){
+  const ids=[...document.querySelectorAll('#p-all .rcb:checked')].map(c=>+c.dataset.id);
+  if(!ids.length){alert('Selecione pelo menos um título'); return;}
+  openModal(`✓ Enviar ${ids.length} títulos para Tratados`,'Observação aplicada a todos',obs=>{
+    ids.forEach(id=>{const rx=DATA.find(x=>x.id===id); if(!rx) return; const snapFull=JSON.parse(JSON.stringify(rx)); const risk=riskInfo(rx); treated[id]={obs,ts:today(),snapFull,classificacaoSC:risk.label};});
+    salvarEstado(); renderTRAT(); document.getElementById('b-trat').textContent=Object.keys(treated).length;
+    document.querySelectorAll('#p-all .rcb:checked').forEach(cb=>cb.checked=false);
+    document.querySelector('#p-all thead input[type=checkbox]').checked=false;
+  });
+}
+function removeTrat(id){delete treated[id]; salvarEstado(); renderTRAT(); document.getElementById('b-trat').textContent=Object.keys(treated).length;}
+function editTratObs(id){
+  const cur=treated[id]||{}; const r=cur.snapFull||DATA.find(x=>x.id===+id)||{};
+  document.getElementById('mdl-title').textContent='✏️ Editar Observação';
+  document.getElementById('mdl-desc').textContent=`${r.num||''} — ${r.razao||''}`;
+  document.getElementById('mdl-obs').value=cur.obs||'';
+  document.getElementById('mdl').classList.add('on');
+  document.getElementById('mdl-ok').onclick=()=>{ treated[id]={...cur, obs:document.getElementById('mdl-obs').value}; salvarEstado(); closeMdl(); renderTRAT(); };
+}
+function changeTratClass(id, selEl){
+  if(!treated[id]) return;
+  const val=selEl.value;
+  if(val==='ok_grazi'){
+    const hoje=new Date().toLocaleDateString('pt-BR');
+    treated[id].classificacaoSC='OK - TRATADO POR GRAZI NO DIA '+hoje;
+  } else {
+    treated[id].classificacaoSC=val;
+  }
+  salvarEstado();
+  const wrap=selEl.closest('div');
+  let infoDiv=wrap.querySelector('.trat-class-info');
+  if(treated[id].classificacaoSC.includes('TRATADO POR GRAZI')){
+    if(infoDiv) { infoDiv.textContent=treated[id].classificacaoSC; infoDiv.style.display='block'; }
+    else { const d=document.createElement('div'); d.className='trat-class-info'; d.style.cssText='font-size:9.5px;color:#16a34a;line-height:1.3;padding:2px 4px;background:#f0fdf4;border-radius:4px;text-align:center'; d.textContent=treated[id].classificacaoSC; wrap.appendChild(d); }
+  } else {
+    if(infoDiv) infoDiv.style.display='none';
+  }
+  const allEntries=Object.values(treated);
+  const okCount=allEntries.filter(e=>(e.classificacaoSC||'').includes('TRATADO POR GRAZI')).length;
+  const statEls=document.querySelectorAll('#trat-stats .pag-stat .v');
+  if(statEls[2]) statEls[2].textContent=okCount;
+}
+function clearTRAT(){
+  ['num','forn','vmin','vmax','d1','d2','uuid'].forEach(i=>{const el=document.getElementById('trat-'+i);if(el)el.value='';});
+  selTrat.st.clear(); selTrat.filial.clear();
+  document.querySelectorAll('#p-trat .pill.on').forEach(p=>p.classList.remove('on'));
+  renderTRAT();
+}
+function renderTRAT(){
+  let entries=Object.entries(treated).map(([id,m])=>{const r=m.snapFull||DATA.find(x=>x.id===+id); if(!r) return null; return {id:+id,r,...m};}).filter(e=>e!==null&&e.r);
+  const gv=i=>{const el=document.getElementById('trat-'+i); return el?el.value:'';};
+  const num=gv('num').toLowerCase(), fn=gv('forn').toLowerCase(), uq=gv('uuid').trim().toLowerCase().replace(/\s+/g,'');
+  const vmin=parseFloat(gv('vmin'))||-Infinity, vmax=parseFloat(gv('vmax'))||Infinity;
+  const d1=gv('d1'), d2=gv('d2');
+  entries=entries.filter(e=>{
+    const r=e.r;
+    if(num && !r.num.toLowerCase().includes(num)) return false;
+    if(fn && !r.fornecedor.toLowerCase().includes(fn)) return false;
+    if(uq && !String(r.uuid||'').toLowerCase().replace(/\s+/g,'').includes(uq)) return false;
+    if(r.valor<vmin||r.valor>vmax) return false;
+    if(d1 && r.vencimento<d1) return false;
+    if(d2 && r.vencimento>d2) return false;
+    if(selTrat.st.size && !selTrat.st.has(r.status)) return false;
+    if(selTrat.filial.size && !selTrat.filial.has((r.filial||'').trim())) return false;
+    return true;
+  });
+  const tot=entries.reduce((s,e)=>s+e.r.saldo,0);
+  const okCount=entries.filter(e=>(e.classificacaoSC||'').includes('TRATADO POR GRAZI')).length;
+  document.getElementById('trat-stats').innerHTML=`
+    <div class="pag-stat" style="border-left-color:#16a34a"><div class="l">Títulos Tratados</div><div class="v" style="color:#16a34a">${entries.length}</div></div>
+    <div class="pag-stat" style="border-left-color:#16a34a"><div class="l">Saldo Total</div><div class="v" style="color:#16a34a">${fmtBR(tot)}</div></div>
+    <div class="pag-stat" style="border-left-color:#7c3aed"><div class="l">OK por Grazi</div><div class="v" style="color:#7c3aed">${okCount}</div></div>`;
+  if(!entries.length){document.getElementById('trat-list').innerHTML='<div style="text-align:center;padding:40px;color:#64748b">Nenhum título tratado.</div>'; return;}
+  const head=`<tr>
+    <th style="width:26px"><input type="checkbox" id="bulk-trat-all" onchange="toggleBulkSelection('trat', this.checked)" title="Selecionar todos os visíveis"></th>
+    <th>EMPRESA - FILIAL</th><th>TIPO</th><th>Nº TÍTULO</th><th>PARC.</th>
+    <th>RAZÃO SOCIAL</th><th>FORNECEDOR</th>
+    <th>EMISSÃO</th><th>VENCIMENTO</th><th>VENC. REAL</th>
+    <th class="num">VALOR TÍTULO</th><th class="num">SALDO</th>
+    <th>STATUS</th>
+    <th class="focus-head">TIPO PGTO</th><th>CLASSIFICAÇÃO SC</th><th>OBSERVAÇÕES</th><th>CAMPO UUID</th><th class="hist-col">HISTÓRICO</th>
+    <th class="usr-head">USUÁRIO INC</th><th class="usr-head">DATA INC</th>
+    <th style="max-width:160px">LINHA DIGITÁVEL</th><th>CNPJ/CPF</th><th style="width:34px"></th></tr>`;
+  const body=entries.map(e=>{const r=e.r;
+    const inc=splitUserDate(r.usrInc);
+    const curClass=e.classificacaoSC||'OK';
+    const isOkGrazi=curClass.includes('TRATADO POR GRAZI');
+    return `<tr>
+    <td><input type="checkbox" class="rcb-trat" data-id="${e.id}" onchange="syncBulkHeader('trat')"></td>
+    <td class="cell-company">${r.filial} - ${getEmpresaFilial(r.empresa || r.filial)}</td>
+    <td class="cell-date">${r.tipo}</td>
+    <td class="cell-date">${r.num}</td>
+    <td class="cell-date">${r.parcela||'—'}</td>
+    <td class="cell-clip" title="${escHtml(r.razao)}">${escHtml(r.razao||'—')}</td>
+    <td class="cell-clip cell-muted" title="${escHtml(r.fornecedor||'')}">${escHtml(r.fornecedor||'—')}</td>
+    <td class="cell-date">${fmtDt(r.emissao)}</td>
+    <td class="cell-date">${fmtDt(r.vencimento)}</td>
+    <td class="cell-date">${fmtDt(r.vencReal)}</td>
+    <td class="num cell-money">${fmtBR(r.valor)}</td>
+    <td class="num cell-money">${fmtBR(r.saldo)}</td>
+    <td><span class="status ${stCls(r.status)}">${r.status}</span></td>
+    <td class="focus-col cell-date">${r.tipoPgto||'—'}</td>
+    <td style="min-width:260px;padding:6px 10px;vertical-align:middle"><div style="display:flex;flex-direction:column;gap:3px"><select class="trat-class-sel" onchange="changeTratClass(${e.id},this)" style="padding:6px 10px;border-radius:8px;border:1px solid #cfd9e8;font-size:11.5px;font-weight:600;background:#fff;cursor:pointer;width:100%;height:32px;appearance:auto"><option value="CRÍTICO: BOLETO SEM IDENTIFICAÇÃO" ${curClass==='CRÍTICO: BOLETO SEM IDENTIFICAÇÃO'?'selected':''}>⛔ CRÍTICO: SEM IDENTIFICAÇÃO</option><option value="ATENÇÃO: DADOS INCOMPLETOS" ${curClass==='ATENÇÃO: DADOS INCOMPLETOS'?'selected':''}>⚠️ ATENÇÃO: DADOS INCOMPLETOS</option><option value="ok_grazi" ${isOkGrazi?'selected':''}>✅ OK - TRATADO POR GRAZI</option></select>${isOkGrazi?`<div class="trat-class-info" style="font-size:9.5px;color:#16a34a;line-height:1.3;padding:2px 4px;background:#f0fdf4;border-radius:4px;text-align:center">${escHtml(curClass)}</div>`:''}</div></td>
+    <td style="padding:6px 8px;min-width:210px"><div class="obs-box"><span class="obs-txt ${e.obs?'':'vazio'}">${escHtml(e.obs)||'Clique para adicionar...'}</span><button class="obs-edit-btn" onclick="editTratObs(${e.id})" title="Editar observação">✏️</button></div></td>
+    <td class="cell-uuid" title="${r.uuid||''}"><button class="uuid-copy uuid-copy-lg" data-uuid="${r.uuid||''}" onclick="copyUUID(this.dataset.uuid,this)" title="Copiar UUID">📋</button></td>
+    <td class="hist-col cell-history" title="${r.historico||''}">${r.historico||'—'}</td>
+    <td class="usr-col cell-user">${escHtml(inc.name||'—')}</td>
+    <td class="usr-col cell-date">${escHtml(inc.date||'—')}</td>
+    <td class="cell-linha" title="${r.linhaDigitavel||''}">${r.linhaDigitavel||'—'}</td>
+    <td class="cell-code">${r.cnpj||'—'}</td>
+    <td class="cell-action"><button class="ab-mn" onclick="removeTrat(${e.id})" title="Remover de Tratados">✕</button></td></tr>`;}).join('');
+  document.getElementById('trat-list').innerHTML=`<div class="drag-scroll" style="overflow-x:auto;cursor:grab;user-select:none"><table class="mon-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
+  applyDrag('#p-trat');
+}
+function downloadTRAT(){
+  let entries=Object.entries(treated).map(([id,m])=>{const r=m.snapFull||DATA.find(x=>x.id===+id); if(!r) return null; return {id:+id,r,...m};}).filter(e=>e!==null&&e.r);
+  const gv=i=>{const el=document.getElementById('trat-'+i); return el?el.value:'';};
+  const num=gv('num').toLowerCase(), fn=gv('forn').toLowerCase(), uq=gv('uuid').trim().toLowerCase().replace(/\s+/g,'');
+  const vmin=parseFloat(gv('vmin'))||-Infinity, vmax=parseFloat(gv('vmax'))||Infinity;
+  const d1=gv('d1'), d2=gv('d2');
+  entries=entries.filter(e=>{
+    const r=e.r;
+    if(num && !r.num.toLowerCase().includes(num)) return false;
+    if(fn && !r.fornecedor.toLowerCase().includes(fn)) return false;
+    if(uq && !String(r.uuid||'').toLowerCase().replace(/\s+/g,'').includes(uq)) return false;
+    if(r.valor<vmin||r.valor>vmax) return false;
+    if(d1 && r.vencimento<d1) return false;
+    if(d2 && r.vencimento>d2) return false;
+    if(selTrat.st.size && !selTrat.st.has(r.status)) return false;
+    if(selTrat.filial.size && !selTrat.filial.has((r.filial||'').trim())) return false;
+    return true;
+  });
+  if(!entries.length){alert('Nada para baixar'); return;}
+  const head='Filial-Empresa;Tipo;Num;Razao;Fornecedor;Emissao;Vencimento;VencReal;Valor;Saldo;Status;TipoPgto;ClassificacaoSC;UUID;LinhaDigitavel;CNPJ;Historico;Observacao;DtTratamento';
+  const body=entries.map(e=>[e.r.filial+' - '+getEmpresaFilial(e.r.empresa||e.r.filial),e.r.tipo,e.r.num,(e.r.razao||'').replace(/;/g,','),(e.r.fornecedor||'').replace(/;/g,','),e.r.emissao||'',e.r.vencimento||'',e.r.vencReal||'',e.r.valor,e.r.saldo,e.r.status,e.r.tipoPgto||'',(e.classificacaoSC||'').replace(/;/g,','),e.r.uuid||'',e.r.linhaDigitavel||'',e.r.cnpj||'',(e.r.historico||'').replace(/;/g,','),(e.obs||'').replace(/;/g,','),e.ts].join(';')).join('\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob(['﻿'+head+'\n'+body],{type:'text/csv;charset=utf-8'})); a.download='tratados.csv'; a.click();
+}
+
 </script>
 <div class="modal-bg" id="mdl"><div class="modal">
   <h3 id="mdl-title">Ação</h3>
@@ -1395,12 +1633,15 @@ function renderNEW(){
     var data=(window.__SE2__&&window.__SE2__.data)||[];
     var byId={};
     for(var i=0;i<data.length;i++){ if(data[i]) byId[data[i].id]=data[i]; }
-    var monLocal={}, pagLocal={};
+    var monLocal={}, tratLocal={}, pagLocal={};
     if(typeof monitored!=='undefined') monLocal=monitored;
+    if(typeof treated!=='undefined') tratLocal=treated;
     if(typeof pagamentos!=='undefined') pagLocal=pagamentos;
     var monInit=(window.__SE2__&&window.__SE2__.monitoredInit)||{};
+    var tratInit=(window.__SE2__&&window.__SE2__.treatedInit)|| (window.__SE2__&&window.__SE2__.tratadosInit)||{};
     var pagInit=(window.__SE2__&&window.__SE2__.pagamentosInit)||{};
     var allMon=Object.assign({}, monInit, monLocal);
+    var allTrat=Object.assign({}, tratInit, tratLocal);
     var allPag=Object.assign({}, pagInit, pagLocal);
     var rows=[];
     rows.push(['TIPO_A\u00c7\u00c3O','ID','UUID','FILIAL','EMPRESA','RAZ\u00c3O_SOCIAL','FORNECEDOR','NUM_TITULO','PARCELA','EMISS\u00c3O','VENCIMENTO','VALOR','SALDO','STATUS','ATRASO','HISTORICO','CNPJ','TIPO_TITULO','CLASSIFICACAO_SC','OBS_A\u00c7\u00c3O','DATA_A\u00c7\u00c3O','SNAP_STATUS','SNAP_SALDO','SNAP_VENCIMENTO']);
@@ -1414,6 +1655,20 @@ function renderNEW(){
         r.saldo!=null?r.saldo:'', r.status||'', r.atraso!=null?r.atraso:'',
         (r.historico||'').replace(/;/g,','), r.cnpj||'', r.tipoTitulo||'',
         r.classificacaoSC||'', (info.obs||'').replace(/;/g,','),
+        info.ts||'', snap.status||'', snap.saldo!=null?snap.saldo:'',
+        snap.vencimento||''
+      ]);
+    });
+    Object.keys(allTrat).forEach(function(id){
+      var info=allTrat[id]; var r=byId[+id]||{};
+      var snap=info.snapFull||{};
+      rows.push([
+        'TRATADOS', id, r.uuid||'', r.filial||'', r.empresa||'',
+        r.razao||'', r.fornecedor||'', r.num||'', r.parcela||'',
+        r.emissao||'', r.vencimento||'', r.valor!=null?r.valor:'',
+        r.saldo!=null?r.saldo:'', r.status||'', r.atraso!=null?r.atraso:'',
+        (r.historico||'').replace(/;/g,','), r.cnpj||'', r.tipoTitulo||'',
+        info.classificacaoSC||r.classificacaoSC||'', (info.obs||'').replace(/;/g,','),
         info.ts||'', snap.status||'', snap.saldo!=null?snap.saldo:'',
         snap.vencimento||''
       ]);
@@ -1458,7 +1713,7 @@ function renderNEW(){
     btn.id='se2-export-csv-btn';
     btn.type='button';
     btn.textContent='\ud83d\udcbe Baixar BACKUP.csv';
-    btn.title='Baixa BACKUP.csv com todos os t\u00edtulos de Monitoramento e Tratados/Pagamento';
+    btn.title='Baixa BACKUP.csv com Monitoramento, Tratados e Pagamento';
     btn.style.cssText='position:fixed;bottom:20px;right:20px;z-index:99999;padding:12px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.2);font-family:system-ui,sans-serif;transition:background .2s';
     btn.onmouseenter=function(){ btn.style.background='#1d4ed8'; };
     btn.onmouseleave=function(){ btn.style.background='#2563eb'; };
